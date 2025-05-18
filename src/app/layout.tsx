@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
 // GeistMono import was removed, ensuring it stays removed.
@@ -59,9 +60,12 @@ export default function RootLayout({
         
         {/* Other specific icons (mask-icon for Safari pinned tabs, shortcut icon) */}
         {/* User needs to create safari-pinned-tab.svg in /public/icons/ */}
-        <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#008080" /> 
+        <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#008080" data-ai-hint="app icon" /> 
         {/* User needs to provide /public/favicon.ico */}
-        <link rel="shortcut icon" href="/favicon.ico" /> 
+        <link rel="shortcut icon" href="/favicon.ico" data-ai-hint="app icon" /> 
+        {/* PNG Favicons for modern browsers */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" data-ai-hint="app icon" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" data-ai-hint="app icon" />
         
         {/* Fallback theme-color, though metadata.themeColor is preferred and more specific */}
         {/* <meta name="theme-color" content="#008080" /> */}
