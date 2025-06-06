@@ -22,8 +22,8 @@
     --muted: 30 80% 94%; /* Lighter Pastel Peach */
     --muted-foreground: 30 30% 55%; /* Soft Brown/Orange */
 
-    --accent: 55 100% 85%; /* Bright Pastel Yellow */
-    --accent-foreground: 55 50% 30%; /* Darker Yellow/Brown */
+    --accent: 140 60% 82%; /* Pastel Green (was Bright Pastel Yellow) */
+    --accent-foreground: 140 35% 25%; /* Dark Green (was Darker Yellow/Brown) */
 
     --destructive: 0 80% 88%; /* Pastel Red */
     --destructive-foreground: 0 50% 30%; /* Dark Red for text on pastel red */
@@ -33,7 +33,7 @@
     --ring: 140 60% 75%; /* Ring color based on pastel green */
 
     --chart-1: 140 70% 75%; /* Pastel Green variant */
-    --chart-2: 55 80% 75%; /* Pastel Yellow variant */
+    --chart-2: 55 80% 75%; /* Pastel Yellow variant - Keeping this distinct for now unless specified */
     --chart-3: 335 70% 80%; /* Pastel Pink variant */
     --chart-4: 30 80% 80%; /* Pastel Peach/Orange variant */
     --chart-5: 200 70% 80%; /* Pastel Blue variant */
@@ -43,8 +43,8 @@
     --sidebar-foreground: 220 20% 40%; /* Dark Muted Blue-Grey */
     --sidebar-primary: 140 55% 78%; /* Pastel Green */
     --sidebar-primary-foreground: 140 30% 20%; /* Dark Green */
-    --sidebar-accent: 55 90% 90%; /* Light Pastel Yellow */
-    --sidebar-accent-foreground: 55 45% 35%; /* Muted Gold/Brown */
+    --sidebar-accent: 140 55% 78%; /* Pastel Green (was Light Pastel Yellow) */
+    --sidebar-accent-foreground: 140 30% 20%; /* Dark Green (was Muted Gold/Brown) */
     --sidebar-border: 335 70% 92%; /* Lighter Pink Border */
     --sidebar-ring: 140 55% 70%; /* Ring based on pastel green */
   }
@@ -68,8 +68,8 @@
     --muted: 220 15% 20%; /* Slightly lighter than background */
     --muted-foreground: 30 40% 65%; /* Muted Peach/Orange */
 
-    --accent: 55 80% 70%; /* Pastel Yellow (still fairly bright for dark mode) */
-    --accent-foreground: 55 30% 15%; /* Very Dark Yellow/Brown */
+    --accent: 140 50% 60%; /* Muted Darker Pastel Green (was Pastel Yellow) */
+    --accent-foreground: 140 80% 95%; /* Very Light Green/Almost White (was Very Dark Yellow/Brown) */
 
     --destructive: 0 60% 55%; /* Muted Red */
     --destructive-foreground: 0 0% 95%; /* Light color for text on muted red */
@@ -79,7 +79,7 @@
     --ring: 140 50% 55%; /* Ring based on darker pastel green */
     
     --chart-1: 140 60% 65%;
-    --chart-2: 55 70% 65%;
+    --chart-2: 55 70% 65%; /* Pastel Yellow variant - Keeping this distinct for now */
     --chart-3: 335 60% 70%;
     --chart-4: 30 70% 70%;
     --chart-5: 200 60% 70%;
@@ -88,8 +88,8 @@
     --sidebar-foreground: 30 70% 85%; /* Light Pastel Peach */
     --sidebar-primary: 140 45% 55%; /* Muted Darker Pastel Green */
     --sidebar-primary-foreground: 140 70% 92%; /* Very Light Green */
-    --sidebar-accent: 55 70% 68%; /* Pastel Yellow */
-    --sidebar-accent-foreground: 55 25% 20%; /* Very Dark Yellow/Brown */
+    --sidebar-accent: 140 45% 55%; /* Muted Darker Pastel Green (was Pastel Yellow) */
+    --sidebar-accent-foreground: 140 70% 92%; /* Very Light Green (was Very Dark Yellow/Brown) */
     --sidebar-border: 335 20% 28%; /* Darker Pink Border */
     --sidebar-ring: 140 45% 50%; /* Ring based on darker pastel green */
   }
