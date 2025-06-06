@@ -23,7 +23,7 @@
     --muted-foreground: 140 55% 88%; /* Lighter Pastel Green for footer */
 
     --accent: 140 60% 82%; /* Pastel Green */
-    --accent-foreground: 140 35% 25%; /* Dark Green */
+    --accent-foreground: 0 0% 13%; /* Near Black for button text */
 
     --destructive: 0 80% 88%; /* Pastel Red */
     --destructive-foreground: 0 50% 30%; /* Dark Red for text on pastel red */
@@ -43,8 +43,8 @@
     --sidebar-foreground: 220 20% 40%; /* Dark Muted Blue-Grey */
     --sidebar-primary: 140 55% 78%; /* Pastel Green */
     --sidebar-primary-foreground: 140 30% 20%; /* Dark Green */
-    --sidebar-accent: 140 55% 78%; /* Pastel Green (was Light Pastel Yellow) */
-    --sidebar-accent-foreground: 140 30% 20%; /* Dark Green (was Muted Gold/Brown) */
+    --sidebar-accent: 140 55% 78%; /* Pastel Green */
+    --sidebar-accent-foreground: 0 0% 13%; /* Near Black for button text in sidebar */
     --sidebar-border: 335 70% 92%; /* Lighter Pink Border */
     --sidebar-ring: 140 55% 70%; /* Ring based on pastel green */
   }

@@ -228,7 +228,7 @@ export default function HomePage() {
 
       <Button 
         onClick={handleToggleSession} 
-        className="mt-8 px-8 py-6 text-lg rounded-lg shadow-md bg-accent hover:bg-accent/90 text-accent-foreground"
+        className="mt-8 px-8 py-6 text-lg font-bold rounded-lg shadow-md bg-accent hover:bg-accent/90 text-accent-foreground"
         aria-label={isActive ? "Stop breathing session" : "Start breathing session"}
       >
         {isActive ? <Square className="mr-2 h-5 w-5" /> : <Play className="mr-2 h-5 w-5" />}
