@@ -191,12 +191,12 @@ export default function HomePage() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 bg-background">
-      <header className="mb-8 text-center">
+      <header className="mb-4 sm:mb-8 text-center">
         <h1 className="text-4xl sm:text-5xl font-bold text-accent">Relax</h1>
         <p className="text-lg text-foreground/80 mt-1">4-7-8 Guided Breathing</p>
       </header>
 
-      <div className="my-6 flex flex-col items-center">
+      <div className="my-4 sm:my-6 flex flex-col items-center">
         <Label className="text-md font-medium text-foreground mb-2">Voice Preference</Label>
         <RadioGroup
           value={selectedVoiceType}
@@ -221,21 +221,21 @@ export default function HomePage() {
         )
       }
       { phase === 'idle' && !isActive && loopsDone === 0 && (
-        <p className="text-md sm:text-lg text-foreground/70 my-8 text-center max-w-md">
+        <p className="text-md sm:text-lg text-foreground/70 my-4 sm:my-8 text-center max-w-md">
           Press start to begin your {TOTAL_LOOPS} rounds of 4-7-8 breathing. <br/>This technique can help reduce stress and promote relaxation.
         </p>
       )}
 
       <Button 
         onClick={handleToggleSession} 
-        className="mt-8 px-8 py-6 text-lg font-bold rounded-lg shadow-md bg-accent hover:bg-accent/90 text-accent-foreground"
+        className="mt-6 sm:mt-8 px-8 py-6 text-lg font-bold rounded-lg shadow-md bg-accent hover:bg-accent/90 text-accent-foreground"
         aria-label={isActive ? "Stop breathing session" : "Start breathing session"}
       >
         {isActive ? <Square className="mr-2 h-5 w-5" /> : <Play className="mr-2 h-5 w-5" />}
         {isActive ? 'Stop Session' : (loopsDone === TOTAL_LOOPS && phase === 'idle' ? 'Start New Session' : 'Start Session')}
       </Button>
 
-      <footer className="mt-12 text-center text-sm text-muted-foreground">
+      <footer className="mt-8 sm:mt-12 text-center text-sm text-muted-foreground">
         <p>Find your calm, one breath at a time.</p>
       </footer>
     </main>

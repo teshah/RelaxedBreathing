@@ -48,7 +48,7 @@ export const BreathingCircle: FC<BreathingCircleProps> = ({ phase, countdown, du
   return (
     <div
       className={cn(
-        "w-56 h-56 sm:w-72 sm:h-72 rounded-full flex flex-col items-center justify-center text-center shadow-xl transition-all ease-linear transform-gpu",
+        "w-48 h-48 sm:w-64 sm:h-64 rounded-full flex flex-col items-center justify-center text-center shadow-xl transition-all ease-linear transform-gpu",
         getPhaseStyles()
       )}
       style={{
@@ -57,10 +57,10 @@ export const BreathingCircle: FC<BreathingCircleProps> = ({ phase, countdown, du
       aria-live="polite"
       aria-atomic="true"
     >
-      <p className="text-6xl sm:text-8xl font-bold text-primary-foregroundtabular-nums">
+      <p className="text-5xl sm:text-7xl font-bold text-primary-foreground tabular-nums">
         {countdown}
       </p>
-      <p className="text-xl sm:text-2xl font-medium text-primary-foreground/90 capitalize mt-1">
+      <p className="text-lg sm:text-xl font-medium text-primary-foreground/90 capitalize mt-1">
         {phase === 'idle' ? 'Ready?' : phase}
       </p>
     </div>

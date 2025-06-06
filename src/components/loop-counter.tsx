@@ -15,7 +15,7 @@ export const LoopCounter: FC<LoopCounterProps> = ({ completed, total }) => {
 
   return (
     <Card className={cn(
-        "w-64 sm:w-72 mt-8 shadow-lg border-accent/30",
+        "w-full max-w-64 sm:max-w-72 mt-6 sm:mt-8 shadow-lg border-accent/30",
         "bg-background" // Added to make the card background white
       )}>
       <CardHeader className="p-3 bg-accent rounded-t-lg ">
