@@ -124,7 +124,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 bg-background">
       <header className="mb-8 text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold text-accent">BreatheEasy</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold text-accent">Relax</h1>
         <p className="text-lg text-foreground/80 mt-1">4-7-8 Guided Breathing</p>
       </header>
 

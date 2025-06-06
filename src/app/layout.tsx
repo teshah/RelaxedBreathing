@@ -9,7 +9,7 @@ import Script from 'next/script';
 const geistSans = GeistSans;
 
 export const metadata: Metadata = {
-  title: 'BreatheEasy - 4-7-8 Breathing Exercise',
+  title: 'Relax - 4-7-8 Breathing Exercise',
   description: 'Relax and unwind with a guided 4-7-8 breathing exercise. Improve focus and reduce stress.',
   manifest: '/manifest.json',
   themeColor: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default', // Or 'black-translucent' or 'black'
-    title: 'BreatheEasy',
+    title: 'Relax',
     // startupImage: [ // Optional: add paths to splash screen images
     //   { url: '/splash/iphone5_splash.png', media: '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)' },
     // ],
@@ -46,7 +46,7 @@ export default function RootLayout({
         {/* Standard meta tags from metadata object are automatically injected by Next.js */}
         
         {/* Additional PWA-specific meta tags not fully covered by Next.js Metadata object */}
-        <meta name="application-name" content="BreatheEasy" />
+        <meta name="application-name" content="Relax" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-config" content="/icons/browserconfig.xml" />
         <meta name="msapplication-TileColor" content="#008080" />
