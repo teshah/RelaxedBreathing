@@ -20,7 +20,7 @@
     --secondary-foreground: 50 50% 40%; /* Muted Gold/Brown */
 
     --muted: 30 80% 94%; /* Lighter Pastel Peach */
-    --muted-foreground: 140 55% 88%; /* Lighter Pastel Green for footer */
+    --muted-foreground: 0 0% 13%; /* Near Black for footer */
 
     --accent: 140 60% 82%; /* Pastel Green */
     --accent-foreground: 0 0% 13%; /* Near Black for button text */
