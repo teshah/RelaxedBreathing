@@ -4,87 +4,94 @@
 
 @layer base {
   :root {
-    --background: 0 0% 87.8%; /* Soft Gray #E0E0E0 */
-    --foreground: 0 0% 10%; /* Darker Gray for text on Soft Gray */
+    --background: 30 100% 98%; /* Very Light Pastel Peach/Off-White */
+    --foreground: 220 25% 30%; /* Dark Muted Blue-Grey */
 
-    --card: 0 0% 92%; /* Slightly lighter gray for cards */
-    --card-foreground: 0 0% 10%;
+    --card: 335 100% 96%; /* Light Pastel Pink */
+    --card-foreground: 335 40% 35%; /* Muted Dark Pink */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%; /* Pure White */
+    --popover-foreground: 220 25% 30%; /* Dark Muted Blue-Grey */
 
-    --primary: 207 100% 85.1%; /* Calming Blue #B0E2FF */
-    --primary-foreground: 207 100% 25%; /* Dark Blue for text on Calming Blue */
+    --primary: 140 60% 82%; /* Pastel Green */
+    --primary-foreground: 140 35% 25%; /* Dark Green */
 
-    --secondary: 0 0% 96.1%; /* Default secondary, can adjust if needed */
-    --secondary-foreground: 0 0% 9%;
+    --secondary: 50 100% 95%; /* Very Light Pastel Yellow */
+    --secondary-foreground: 50 50% 40%; /* Muted Gold/Brown */
 
-    --muted: 0 0% 92%; /* Same as card for muted elements */
-    --muted-foreground: 0 0% 40%; /* Darker gray for muted text */
+    --muted: 30 80% 94%; /* Lighter Pastel Peach */
+    --muted-foreground: 30 30% 55%; /* Soft Brown/Orange */
 
-    --accent: 180 100% 25.1%; /* Teal #008080 */
-    --accent-foreground: 0 0% 98%; /* White/Light color for text on Teal */
+    --accent: 55 100% 85%; /* Bright Pastel Yellow */
+    --accent-foreground: 55 50% 30%; /* Darker Yellow/Brown */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 80% 88%; /* Pastel Red */
+    --destructive-foreground: 0 50% 30%; /* Dark Red for text on pastel red */
 
-    --border: 0 0% 80%; /* Slightly darker border */
-    --input: 0 0% 89.8%;
-    --ring: 180 100% 35.1%; /* Ring color based on accent */
+    --border: 335 80% 90%; /* Light Pink Border */
+    --input: 50 100% 97%; /* Very Light Pastel Yellow for input */
+    --ring: 140 60% 75%; /* Ring color based on pastel green */
 
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: 140 70% 75%; /* Pastel Green variant */
+    --chart-2: 55 80% 75%; /* Pastel Yellow variant */
+    --chart-3: 335 70% 80%; /* Pastel Pink variant */
+    --chart-4: 30 80% 80%; /* Pastel Peach/Orange variant */
+    --chart-5: 200 70% 80%; /* Pastel Blue variant */
     --radius: 0.5rem;
 
-    /* Sidebar variables can remain default or be themed if sidebar is used */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 335 100% 98%; /* Light Pastel Pink for Sidebar */
+    --sidebar-foreground: 220 20% 40%; /* Dark Muted Blue-Grey */
+    --sidebar-primary: 140 55% 78%; /* Pastel Green */
+    --sidebar-primary-foreground: 140 30% 20%; /* Dark Green */
+    --sidebar-accent: 55 90% 90%; /* Light Pastel Yellow */
+    --sidebar-accent-foreground: 55 45% 35%; /* Muted Gold/Brown */
+    --sidebar-border: 335 70% 92%; /* Lighter Pink Border */
+    --sidebar-ring: 140 55% 70%; /* Ring based on pastel green */
   }
 
   .dark {
-    /* Dark theme remains default, can be customized if needed */
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 207 100% 85.1%; /* Calming Blue for dark theme too */
-    --primary-foreground: 207 100% 25%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 180 100% 35.1%; /* Teal, slightly lighter for dark theme accent */
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 180 100% 45.1%; /* Ring color based on accent for dark theme */
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --background: 220 15% 15%; /* Very Dark Blue-Grey */
+    --foreground: 30 80% 90%; /* Light Pastel Peach */
+
+    --card: 335 20% 22%; /* Dark Muted Pink */
+    --card-foreground: 335 80% 88%; /* Light Pastel Pink */
+
+    --popover: 220 15% 18%; /* Slightly Lighter Dark Blue-Grey */
+    --popover-foreground: 30 80% 90%; /* Light Pastel Peach */
+
+    --primary: 140 50% 60%; /* Muted Darker Pastel Green */
+    --primary-foreground: 140 80% 95%; /* Very Light Green/Almost White */
+
+    --secondary: 50 40% 25%; /* Dark Muted Yellow/Brown */
+    --secondary-foreground: 50 90% 85%; /* Light Pastel Yellow */
+
+    --muted: 220 15% 20%; /* Slightly lighter than background */
+    --muted-foreground: 30 40% 65%; /* Muted Peach/Orange */
+
+    --accent: 55 80% 70%; /* Pastel Yellow (still fairly bright for dark mode) */
+    --accent-foreground: 55 30% 15%; /* Very Dark Yellow/Brown */
+
+    --destructive: 0 60% 55%; /* Muted Red */
+    --destructive-foreground: 0 0% 95%; /* Light color for text on muted red */
+
+    --border: 335 20% 30%; /* Dark Muted Pink Border */
+    --input: 50 30% 22%; /* Dark Muted Yellow for input */
+    --ring: 140 50% 55%; /* Ring based on darker pastel green */
     
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --chart-1: 140 60% 65%;
+    --chart-2: 55 70% 65%;
+    --chart-3: 335 60% 70%;
+    --chart-4: 30 70% 70%;
+    --chart-5: 200 60% 70%;
+    
+    --sidebar-background: 335 20% 18%; /* Dark Muted Pink for Sidebar */
+    --sidebar-foreground: 30 70% 85%; /* Light Pastel Peach */
+    --sidebar-primary: 140 45% 55%; /* Muted Darker Pastel Green */
+    --sidebar-primary-foreground: 140 70% 92%; /* Very Light Green */
+    --sidebar-accent: 55 70% 68%; /* Pastel Yellow */
+    --sidebar-accent-foreground: 55 25% 20%; /* Very Dark Yellow/Brown */
+    --sidebar-border: 335 20% 28%; /* Darker Pink Border */
+    --sidebar-ring: 140 45% 50%; /* Ring based on darker pastel green */
   }
 }
 
@@ -94,6 +101,5 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Removed font-family: Arial, Helvetica, sans-serif; as Geist is used via layout.tsx */
   }
 }
