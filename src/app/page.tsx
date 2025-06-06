@@ -24,9 +24,9 @@ const phaseDurations: Record<Exclude<Phase, 'idle'>, number> = {
 };
 
 const phaseMessages: Record<Exclude<Phase, 'idle'>, string> = {
-  inhale: "Breath in",
-  hold: "Hold breadth",
-  exhale: "Breath out",
+  inhale: "Breathe in",
+  hold: "Hold breath",
+  exhale: "Breathe out",
 };
 
 export default function HomePage() {
