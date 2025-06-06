@@ -20,10 +20,10 @@
     --secondary-foreground: 50 50% 40%; /* Muted Gold/Brown */
 
     --muted: 30 80% 94%; /* Lighter Pastel Peach */
-    --muted-foreground: 30 30% 55%; /* Soft Brown/Orange */
+    --muted-foreground: 140 55% 88%; /* Lighter Pastel Green for footer */
 
-    --accent: 140 60% 82%; /* Pastel Green (was Bright Pastel Yellow) */
-    --accent-foreground: 140 35% 25%; /* Dark Green (was Darker Yellow/Brown) */
+    --accent: 140 60% 82%; /* Pastel Green */
+    --accent-foreground: 140 35% 25%; /* Dark Green */
 
     --destructive: 0 80% 88%; /* Pastel Red */
     --destructive-foreground: 0 50% 30%; /* Dark Red for text on pastel red */
@@ -66,7 +66,7 @@
     --secondary-foreground: 50 90% 85%; /* Light Pastel Yellow */
 
     --muted: 220 15% 20%; /* Slightly lighter than background */
-    --muted-foreground: 30 40% 65%; /* Muted Peach/Orange */
+    --muted-foreground: 140 50% 75%; /* Lighter Dark Pastel Green for footer in dark mode */
 
     --accent: 140 50% 60%; /* Muted Darker Pastel Green (was Pastel Yellow) */
     --accent-foreground: 140 80% 95%; /* Very Light Green/Almost White (was Very Dark Yellow/Brown) */
