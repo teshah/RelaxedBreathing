@@ -7,6 +7,8 @@ import { BreathingCircle } from '@/components/breathing-circle';
 import { LoopCounter } from '@/components/loop-counter';
 import { Play, Square } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 const INHALE_DURATION = 4;
 const HOLD_DURATION = 7;
@@ -37,21 +39,89 @@ export default function HomePage() {
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const speechSynthesisRef = useRef<SpeechSynthesis | null>(null);
 
+  // State for voices
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedVoiceType, setSelectedVoiceType] = useState<'female' | 'male'>('female');
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       speechSynthesisRef.current = window.speechSynthesis;
+      
+      const updateVoices = () => {
+        if (speechSynthesisRef.current) {
+          const availableVoices = speechSynthesisRef.current.getVoices();
+          if (availableVoices.length > 0) {
+            setVoices(availableVoices);
+            // Clear the listener once voices are loaded
+            speechSynthesisRef.current.onvoiceschanged = null;
+          }
+        }
+      };
+
+      // Voices might not be loaded immediately.
+      // Browsers often fire 'voiceschanged' event when the list is ready.
+      if (speechSynthesisRef.current.getVoices().length === 0) {
+         speechSynthesisRef.current.onvoiceschanged = updateVoices;
+      } else {
+        updateVoices(); // If already loaded
+      }
+      
+      // Additional fallback in case onvoiceschanged isn't fired or voices loaded very late
+      const fallbackTimeout = setTimeout(() => {
+        if (voices.length === 0) { // only if voices are still not set
+            updateVoices();
+        }
+      }, 250); // Increased timeout slightly for safety
+      
+      return () => {
+        clearTimeout(fallbackTimeout);
+        if (speechSynthesisRef.current) {
+          speechSynthesisRef.current.onvoiceschanged = null;
+        }
+      };
     }
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Runs once on mount to initialize speech synthesis and voices
 
   const speak = useCallback((text: string) => {
     if (speechSynthesisRef.current) {
       if (speechSynthesisRef.current.speaking) {
-        speechSynthesisRef.current.cancel(); // Cancel previous utterance if any
+        speechSynthesisRef.current.cancel(); 
       }
       const utterance = new SpeechSynthesisUtterance(text);
+
+      let chosenVoice: SpeechSynthesisVoice | null = null;
+      if (voices.length > 0) {
+        const langPrefix = 'en'; // Prioritize English voices
+
+        // Try to find a voice matching the type and language preference
+        if (selectedVoiceType === 'female') {
+          chosenVoice = 
+            voices.find(voice => voice.lang.startsWith(langPrefix) && (voice.name.toLowerCase().includes('female') || voice.name.toLowerCase().includes('zira') || voice.name.toLowerCase().includes('samantha') || voice.name.toLowerCase().includes('eva'))) ||
+            voices.find(voice => voice.lang.startsWith(langPrefix) && !voice.name.toLowerCase().includes('male') && !voice.name.toLowerCase().includes('david') && !voice.name.toLowerCase().includes('mark') && !voice.name.toLowerCase().includes('alex')) ||
+            voices.find(voice => voice.lang.startsWith(langPrefix) && voice.default && (voice.name.toLowerCase().includes('female') || !voice.name.toLowerCase().includes('male'))) || // Default english voice that seems female
+            voices.find(voice => voice.default && (voice.name.toLowerCase().includes('female') || !voice.name.toLowerCase().includes('male'))); // Any default voice that seems female
+        } else { // male
+          chosenVoice = 
+            voices.find(voice => voice.lang.startsWith(langPrefix) && (voice.name.toLowerCase().includes('male') || voice.name.toLowerCase().includes('david') || voice.name.toLowerCase().includes('mark') || voice.name.toLowerCase().includes('alex'))) ||
+            voices.find(voice => voice.lang.startsWith(langPrefix) && !voice.name.toLowerCase().includes('female') && !voice.name.toLowerCase().includes('zira') && !voice.name.toLowerCase().includes('samantha') && !voice.name.toLowerCase().includes('eva')) ||
+            voices.find(voice => voice.lang.startsWith(langPrefix) && voice.default && (voice.name.toLowerCase().includes('male') || !voice.name.toLowerCase().includes('female'))) ||
+            voices.find(voice => voice.default && (voice.name.toLowerCase().includes('male') || !voice.name.toLowerCase().includes('female')));
+        }
+        
+        // If no specific type match, try any English voice or any default voice
+        if (!chosenVoice) {
+            chosenVoice = voices.find(v => v.lang.startsWith(langPrefix) && v.default) || voices.find(v => v.default) || voices.find(v => v.lang.startsWith(langPrefix)) || voices[0];
+        }
+      }
+      
+      if (chosenVoice) {
+        utterance.voice = chosenVoice;
+      }
+
       speechSynthesisRef.current.speak(utterance);
     }
-  }, []);
+  }, [voices, selectedVoiceType]);
 
   useEffect(() => {
     if (!isActive) {
@@ -68,7 +138,7 @@ export default function HomePage() {
       timeoutIdRef.current = setTimeout(() => {
         setCountdown(prev => prev - 1);
       }, 1000);
-    } else { // Countdown reached 0, transition to next phase
+    } else { 
       if (phase === 'inhale') {
         setPhase('hold');
         setCountdown(HOLD_DURATION);
@@ -101,17 +171,15 @@ export default function HomePage() {
   }, [isActive, phase, countdown, loopsDone, speak, toast]);
 
   const handleToggleSession = () => {
-    if (isActive) { // Stopping session
+    if (isActive) { 
       setIsActive(false);
       setPhase('idle');
       setCountdown(0);
-      // LoopsDone is not reset to show progress if stopped early,
-      // will be reset when starting a new session.
       if (speechSynthesisRef.current?.speaking) {
         speechSynthesisRef.current.cancel();
       }
       toast({ title: "Session Stopped", description: "Breathing exercise has been stopped.", duration: 3000 });
-    } else { // Starting session
+    } else { 
       setIsActive(true);
       setLoopsDone(0);
       setPhase('inhale');
@@ -128,6 +196,24 @@ export default function HomePage() {
         <p className="text-lg text-foreground/80 mt-1">4-7-8 Guided Breathing</p>
       </header>
 
+      <div className="my-6 flex flex-col items-center">
+        <Label className="text-md font-medium text-foreground mb-2">Voice Preference</Label>
+        <RadioGroup
+          value={selectedVoiceType}
+          onValueChange={(value) => setSelectedVoiceType(value as 'female' | 'male')}
+          className="flex gap-x-4 sm:gap-x-6 items-center"
+        >
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="female" id="female-voice" />
+            <Label htmlFor="female-voice" className="font-normal text-sm sm:text-base cursor-pointer">Female</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="male" id="male-voice" />
+            <Label htmlFor="male-voice" className="font-normal text-sm sm:text-base cursor-pointer">Male</Label>
+          </div>
+        </RadioGroup>
+      </div>
+
       <BreathingCircle phase={phase} countdown={countdown} durations={durations} />
 
       { (isActive || (loopsDone > 0 && phase === 'idle')) && (
@@ -139,7 +225,6 @@ export default function HomePage() {
           Press start to begin your {TOTAL_LOOPS} rounds of 4-7-8 breathing. <br/>This technique can help reduce stress and promote relaxation.
         </p>
       )}
-
 
       <Button 
         onClick={handleToggleSession} 
