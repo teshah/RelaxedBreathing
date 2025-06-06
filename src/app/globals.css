@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 30 100% 98%; /* Very Light Pastel Peach/Off-White */
+    --background: 0 0% 100%; /* Pure White */
     --foreground: 220 25% 30%; /* Dark Muted Blue-Grey */
 
     --card: 335 100% 96%; /* Light Pastel Pink */
