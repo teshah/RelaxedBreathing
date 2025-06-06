@@ -3,6 +3,7 @@
 
 import type { FC } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 interface LoopCounterProps {
   completed: number;
@@ -13,7 +14,10 @@ export const LoopCounter: FC<LoopCounterProps> = ({ completed, total }) => {
   const remaining = Math.max(0, total - completed);
 
   return (
-    <Card className="w-64 sm:w-72 mt-8 shadow-lg border-accent/30">
+    <Card className={cn(
+        "w-64 sm:w-72 mt-8 shadow-lg border-accent/30",
+        "bg-background" // Added to make the card background white
+      )}>
       <CardHeader className="p-3 bg-accent rounded-t-lg ">
         <CardTitle className="text-center text-xl text-accent-foreground">Progress</CardTitle>
       </CardHeader>
