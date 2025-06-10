@@ -157,7 +157,7 @@ export default function HomePage() {
           const totalSessionSeconds = TOTAL_LOOPS * totalSecondsPerLoop;
           const totalSessionMinutes = (totalSessionSeconds / 60).toFixed(1);
 
-          const completionMessage = `Session complete. Well done! Nice job! You spent ${totalSessionMinutes} minutes to start your day strong!`;
+          const completionMessage = `Session complete. Well done! You spent ${totalSessionMinutes} minutes to start your day strong!`;
           speak(completionMessage);
           
           toast({
