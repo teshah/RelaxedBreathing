@@ -1,3 +1,4 @@
+
 // src/app/page.tsx
 "use client";
 
@@ -39,7 +40,6 @@ export default function HomePage() {
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const speechSynthesisRef = useRef<SpeechSynthesis | null>(null);
 
-  // State for voices
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [selectedVoiceType, setSelectedVoiceType] = useState<'female' | 'male'>('female');
 
@@ -52,26 +52,26 @@ export default function HomePage() {
           const availableVoices = speechSynthesisRef.current.getVoices();
           if (availableVoices.length > 0) {
             setVoices(availableVoices);
-            // Clear the listener once voices are loaded
-            speechSynthesisRef.current.onvoiceschanged = null;
+            if (speechSynthesisRef.current) {
+              speechSynthesisRef.current.onvoiceschanged = null;
+            }
           }
         }
       };
 
-      // Voices might not be loaded immediately.
-      // Browsers often fire 'voiceschanged' event when the list is ready.
-      if (speechSynthesisRef.current.getVoices().length === 0) {
-         speechSynthesisRef.current.onvoiceschanged = updateVoices;
+      if (speechSynthesisRef.current?.getVoices().length === 0) {
+         if (speechSynthesisRef.current) {
+           speechSynthesisRef.current.onvoiceschanged = updateVoices;
+         }
       } else {
-        updateVoices(); // If already loaded
+        updateVoices(); 
       }
       
-      // Additional fallback in case onvoiceschanged isn't fired or voices loaded very late
       const fallbackTimeout = setTimeout(() => {
-        if (voices.length === 0) { // only if voices are still not set
+        if (voices.length === 0) { 
             updateVoices();
         }
-      }, 250); // Increased timeout slightly for safety
+      }, 250); 
       
       return () => {
         clearTimeout(fallbackTimeout);
@@ -81,7 +81,7 @@ export default function HomePage() {
       };
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Runs once on mount to initialize speech synthesis and voices
+  }, []); 
 
   const speak = useCallback((text: string) => {
     if (speechSynthesisRef.current) {
@@ -92,16 +92,15 @@ export default function HomePage() {
 
       let chosenVoice: SpeechSynthesisVoice | null = null;
       if (voices.length > 0) {
-        const langPrefix = 'en'; // Prioritize English voices
+        const langPrefix = 'en'; 
 
-        // Try to find a voice matching the type and language preference
         if (selectedVoiceType === 'female') {
           chosenVoice = 
             voices.find(voice => voice.lang.startsWith(langPrefix) && (voice.name.toLowerCase().includes('female') || voice.name.toLowerCase().includes('zira') || voice.name.toLowerCase().includes('samantha') || voice.name.toLowerCase().includes('eva'))) ||
             voices.find(voice => voice.lang.startsWith(langPrefix) && !voice.name.toLowerCase().includes('male') && !voice.name.toLowerCase().includes('david') && !voice.name.toLowerCase().includes('mark') && !voice.name.toLowerCase().includes('alex')) ||
-            voices.find(voice => voice.lang.startsWith(langPrefix) && voice.default && (voice.name.toLowerCase().includes('female') || !voice.name.toLowerCase().includes('male'))) || // Default english voice that seems female
-            voices.find(voice => voice.default && (voice.name.toLowerCase().includes('female') || !voice.name.toLowerCase().includes('male'))); // Any default voice that seems female
-        } else { // male
+            voices.find(voice => voice.lang.startsWith(langPrefix) && voice.default && (voice.name.toLowerCase().includes('female') || !voice.name.toLowerCase().includes('male'))) ||
+            voices.find(voice => voice.default && (voice.name.toLowerCase().includes('female') || !voice.name.toLowerCase().includes('male'))); 
+        } else { 
           chosenVoice = 
             voices.find(voice => voice.lang.startsWith(langPrefix) && (voice.name.toLowerCase().includes('male') || voice.name.toLowerCase().includes('david') || voice.name.toLowerCase().includes('mark') || voice.name.toLowerCase().includes('alex'))) ||
             voices.find(voice => voice.lang.startsWith(langPrefix) && !voice.name.toLowerCase().includes('female') && !voice.name.toLowerCase().includes('zira') && !voice.name.toLowerCase().includes('samantha') && !voice.name.toLowerCase().includes('eva')) ||
@@ -109,7 +108,6 @@ export default function HomePage() {
             voices.find(voice => voice.default && (voice.name.toLowerCase().includes('male') || !voice.name.toLowerCase().includes('female')));
         }
         
-        // If no specific type match, try any English voice or any default voice
         if (!chosenVoice) {
             chosenVoice = voices.find(v => v.lang.startsWith(langPrefix) && v.default) || voices.find(v => v.default) || voices.find(v => v.lang.startsWith(langPrefix)) || voices[0];
         }
@@ -154,8 +152,14 @@ export default function HomePage() {
         } else {
           setIsActive(false);
           setPhase('idle');
-          const completionMessage = "Session complete. Well done!";
+          
+          const totalSecondsPerLoop = INHALE_DURATION + HOLD_DURATION + EXHALE_DURATION;
+          const totalSessionSeconds = TOTAL_LOOPS * totalSecondsPerLoop;
+          const totalSessionMinutes = (totalSessionSeconds / 60).toFixed(1);
+
+          const completionMessage = `Session complete. Well done! Nice job! You spent ${totalSessionMinutes} minutes to start your day strong!`;
           speak(completionMessage);
+          
           toast({
             title: "Session Complete!",
             description: "You've completed all breathing rounds.",
